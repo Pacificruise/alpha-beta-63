@@ -1,72 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Love ❤️</title>
+    <title>Happy Rose Day, My Love</title>
     <style>
         body {
             text-align: center;
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             background-color: #ffe6e6;
-            margin-top: 50px;
+            overflow: hidden;
+            position: relative;
         }
-        .box {
+
+        #container {
             background: white;
             padding: 20px;
+            border-radius: 15px;
             display: inline-block;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+            position: relative;
+            z-index: 10;
         }
-        .button {
+
+        #rose,
+        #message {
+            display: none;
+            opacity: 100;
+            position: relative;
+            z-index: 10;
+        }
+
+        #rose img {
+            margin-top: 50px;
+            width: 150px;
+            transform: scale(0);
+            transition: transform 1.5s ease-in-out;
+            filter: drop-shadow(0px 0px 22px rgb(252, 82, 82));
+
+
+        }
+
+        #message {
+            font-size: 22px;
+            color: #d63384;
+            font-weight: bold;
             margin-top: 20px;
-            padding: 10px 20px;
-            background: red;
+            animation: heartbeat 1.5s infinite alternate, glow 2s infinite alternate;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 18px;
+            font-size: 18px;
+            background-color: #ff4d4d;
             color: white;
             border: none;
-            border-radius: 5px;
             cursor: pointer;
+            border-radius: 8px;
+            transition: background 0.3s ease-in-out, transform 0.2s;
         }
-        .button:hover {
-            background: darkred;
+
+        button:hover {
+            background-color: #cc0000;
+            transform: scale(1.1);
         }
-        #rose, #note {
-            display: none;
-            margin-top: 20px;
+
+        @keyframes heartbeat {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.1);
+            }
         }
-        #rose img {
-            width: 150px;
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px pink;
+            }
+
+            to {
+                text-shadow: 0 0 15px red;
+            }
         }
-        #note {
-            font-size: 18px;
-            font-weight: bold;
-            color: #333;
+
+        @keyframes floatingHearts {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 20px;
+            animation: floatingHearts 5s linear infinite;
         }
     </style>
 </head>
+
 <body>
 
-    <div class="box">
-        <p>My love, I have something special for you! ❤️</p>
-        <button class="button" onclick="showRose()">Open</button>
+    <div id="container">
+        <h1>Meri pyari teddy , aapke liye kuch hai..!! 💕😚💖</h1>
+        <button onclick="showSurprise()">Open</button>
     </div>
 
     <div id="rose">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiDfgFw0hb8nZdXl17fFFsCBn5Oce3e5hnLKU81Cqr0U0GjYybLu6N7jI&s=10"  alt="Beautiful roses">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiDfgFw0hb8nZdXl17fFFsCBn5Oce3e5hnLKU81Cqr0U0GjYybLu6N7jI&s=10"
+            alt="Rose">
     </div>
 
-    <div id="note">
-        <p>Happy Rose Day, my love! 🌹 You are the most beautiful flower in my life, and I love you endlessly! ❤️</p>
-    </div>
+    <p id="message">You are the most beautiful flower in my garden of life.
+        I love you! ❤️</p>
 
     <script>
-        function showRose() {
-            document.getElementById("rose").style.display = "block";
+        function showSurprise() {
+            let container = document.getElementById("container");
+            container.style.transform = "scale(0.8)";
+            container.style.opacity = "0";
+
             setTimeout(() => {
-                document.getElementById("note").style.display = "block";
-            }, 500);
+                container.style.display = "none"; // Hide it completely
+
+                // Show and bloom the rose
+                let rose = document.getElementById("rose");
+                rose.style.display = "block";
+                setTimeout(() => {
+                    rose.querySelector("img").style.transform = "scale(1)";
+                }, 100);
+
+                // Fade in the love message with a heartbeat effect after 2 seconds
+                setTimeout(() => {
+                    let message = document.getElementById("message");
+                    message.style.display = "block";
+                    setTimeout(() => {
+                        message.style.opacity = "1";
+                    }, 100);
+                }, 2000);
+
+                // Start floating hearts animation
+                createHearts();
+            }, 1000);
+        }
+
+        function createHearts() {
+            for (let i = 0; i < 20; i++) {
+                let heart = document.createElement("div");
+                heart.className = "heart";
+                heart.innerHTML = "❤️";
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+                heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+                document.body.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 20000);
+            }
         }
     </script>
 
 </body>
+
 </html>
