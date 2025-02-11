@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Love ❤️</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #ffe6e6;
+            margin-top: 50px;
+        }
+        .box {
+            background: white;
+            padding: 20px;
+            display: inline-block;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background: darkred;
+        }
+        #rose, #note {
+            display: none;
+            margin-top: 20px;
+        }
+        #rose img {
+            width: 150px;
+        }
+        #note {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <p>My love, I have something special for you! ❤️</p>
+        <button class="button" onclick="showRose()">Open</button>
+    </div>
+
+    <div id="rose">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiDfgFw0hb8nZdXl17fFFsCBn5Oce3e5hnLKU81Cqr0U0GjYybLu6N7jI&s=10"  alt="Beautiful roses">
+    </div>
+
+    <div id="note">
+        <p>Happy Rose Day, my love! 🌹 You are the most beautiful flower in my life, and I love you endlessly! ❤️</p>
+    </div>
+
+    <script>
+        function showRose() {
+            document.getElementById("rose").style.display = "block";
+            setTimeout(() => {
+                document.getElementById("note").style.display = "block";
+            }, 500);
+        }
+    </script>
+
+</body>
+</html>
